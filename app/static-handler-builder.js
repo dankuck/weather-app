@@ -1,4 +1,4 @@
-let fs = require('fs');
+const fs = require('fs');
 
 function buildErrorPage(filename, err) {
     return `<!DOCTYPE html>
