@@ -4,7 +4,8 @@
   "description": "A node.js/vue.js app to access and display weather data",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node ./node_modules/webpack/bin/webpack.js --config webpack.conf.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,10 @@
   },
   "homepage": "https://github.com/dankuck/weather-app#readme",
   "devDependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "vue": "^2.5.16",
+    "vue-loader": "^15.2.4",
+    "webpack": "^4.14.0",
+    "webpack-cli": "^3.0.8"
   }
 }
