@@ -1,13 +1,6 @@
-let app = require('express')();
-let fs = require('fs');
+const app = require('express')();
+const serve = require('./app/static-handler-builder.js');
  
-app.get('/', function (req, res) {
-    fs.readFile('./public/index.html', 'utf8', (err, data) => {
-        if (err) {
-            res.send("Could not load index.html: " + err);
-        }
-        res.send(data);
-    });
-})
+app.get('/', serve('./index.html'))
  
 app.listen(3000)
