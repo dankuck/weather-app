@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/dankuck/weather-app/issues"
   },
-  "homepage": "https://github.com/dankuck/weather-app#readme"
+  "homepage": "https://github.com/dankuck/weather-app#readme",
+  "devDependencies": {
+    "express": "^4.16.3"
+  }
 }
