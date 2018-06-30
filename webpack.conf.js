@@ -1,5 +1,7 @@
+const VueLoader = require('vue-loader');
 
 module.exports = {
+    devtool: 'sourcemap',
     entry: [
         './frontend/app.js'
     ],
@@ -7,10 +9,16 @@ module.exports = {
         filename: 'app.js',
         path: __dirname + '/public',
     },
-    // mode: 'production',
+    mode: 'development',
     resolve: {
-        extensions: ['.vue', '.js']
+        extensions: ['.vue', '.js'],
+        alias: {
+            'vue$': 'vue/dist/vue.js'
+        }
     },
+    plugins: [
+        new VueLoader.VueLoaderPlugin()
+    ],
     module: {
         rules: [
             {
