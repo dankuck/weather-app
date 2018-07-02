@@ -1,16 +1,17 @@
-import { shallow } from '@vue/test-utils';
+require('jsdom-global')();
+import { shallowMount } from '@vue/test-utils';
 import App from '../../frontend/App.vue';
 import assert from 'assert';
 
 describe('App', function () {
 
-    let wrapper;
-
-    beforeEach(function () {
-        wrapper = shallow(App, {});
+    it('mounts', function () {
+        let wrapper = shallowMount(App, {});
+        assert(wrapper.isVueInstance());
     });
 
-    it('mounts', function () {
-        assert(wrapper.isVueInstance());
+    it('has the title', function () {
+        let wrapper = shallowMount(App, {});
+        assert(/Daniel Kuck's Amazing Weather App/.test(wrapper.text()));
     });
 });

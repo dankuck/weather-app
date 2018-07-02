@@ -7,6 +7,7 @@
     "test": "npm run test-frontend && npm run test-backend",
     "test-backend": "node ./node_modules/mocha/bin/mocha tests/backend/**/*.spec.js",
     "test-frontend": "node ./node_modules/mocha-webpack/bin/mocha-webpack --webpack-config webpack.test.js --require tests/frontend/_common.js tests/frontend/**/*.spec.js",
+    "test-frontend-watch": "node ./node_modules/mocha-webpack/bin/mocha-webpack --watch --webpack-config webpack.test.js --require tests/frontend/_common.js tests/frontend/**/*.spec.js",
     "run": "node index.js",
     "build": "node ./node_modules/webpack/bin/webpack.js --config webpack.conf.js"
   },
