@@ -7,7 +7,8 @@
 2. A section MUST exist to display the results of a search.
     2.a. The section MUST start with the same city as the search text box.
     2.b. When a search is conducted a title header on this section MUST display the location found.
-        2.b.a. If no location is found, the title MAY reflect the search bar.
+        2.b.a. If no matching location is found, the title MAY reflect the search bar.
+        2.b.b. If no matching location is found, a message to that effect MUST be shown.
     2.c. The weather forecast MUST be shown as a list of time periods.
         2.c.a. Each list item MUST display a weather icon.
         2.c.b. Each list item MUST display an abbreviated date and time.
