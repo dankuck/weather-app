@@ -1,5 +1,5 @@
 {
-    "openweatherapi": {
+    "openweathermap": {
         "api_key": ""
     }
 }

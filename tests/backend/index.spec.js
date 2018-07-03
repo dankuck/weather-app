@@ -90,7 +90,12 @@ describe('index.js', function () {
         let caughtUrl;
         requestMock.get = function (url, callback) {
             caughtUrl = url;
-            callback(500, {}, "API not currently available");
+            // The openweathermap API gives errors back in this format.
+            const response = {
+                "cod": "404", 
+                "message": "API not currently available",
+            };
+            callback(null, {}, JSON.stringify(response));
         };
         configMock.openweathermap = {
             api_key: 'mykey',
