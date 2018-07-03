@@ -12,7 +12,7 @@ export default {
     components: {Search},
     data() {
         return {
-            searchTerm: 'New York City',
+            searchTerm: 'New York',
         };
     },
     methods: {
