@@ -1,6 +1,6 @@
 const app = require('express')();
 const serve = require('./app/static-handler-builder.js');
-const request = require('request');
+const OpenWeatherApiClient = require('./app/open-weather-api-client.js');
 const config = require('./config.json');
  
 app.get('/', serve('./index.html'));
@@ -12,14 +12,12 @@ app.get('/api/weather-search', function (req, res) {
         return;
     }
     const api_key = config.openweathermap.api_key;
-    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&mode=json&APPID=${api_key}`;
-    request.get(url, function (error, response, body) {
-        if (error) {
-            res.status(error).json({error: body});
-            return;
-        }
-        res.json(JSON.parse(body));
-    });
+    const client = new OpenWeatherApiClient(api_key);
+    client.getForecastByCityName(location)
+        .then(
+            response => res.json(response),
+            error => res.status(500).json({error: error})
+        );
 });
  
 const server = app.listen(3000)
