@@ -7,7 +7,8 @@ class OpenWeatherApiClient {
     }
 
     getForecastByCityName(location) {
-        const url = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&mode=json&APPID=${this.api_key}`;
+        const encodedLocation = encodeURIComponent(location);
+        const url = `https://api.openweathermap.org/data/2.5/forecast?q=${encodedLocation}&mode=json&APPID=${this.api_key}`;
         return new Promise((resolve, reject) => {
             Request.get(url, function (error, response, body) {
                 const data = JSON.parse(body);

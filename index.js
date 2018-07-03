@@ -17,10 +17,10 @@ app.get('/api/weather-search', function (req, res) {
         return;
     }
     const client = new OpenWeatherApiClient(api_key);
-    client.getForecastByCityName(location)
+    client.getForecastByCityName(`${location},us`)
         .then(
             response => res.json(response),
-            error => res.status(500).json({error: error})
+            error => res.status(500).json({error})
         );
 });
  

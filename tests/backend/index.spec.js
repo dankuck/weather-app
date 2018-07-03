@@ -62,7 +62,7 @@ describe('index.js', function () {
                 assert(/https/.test(caughtUrl));
                 assert(/openweathermap/.test(caughtUrl));
                 assert(/mode=json/.test(caughtUrl));
-                assert(/q=nowhere/.test(caughtUrl));
+                assert(/q=nowhere\%2Cus/.test(caughtUrl), caughtUrl);
                 assert(/APPID=mykey/.test(caughtUrl));
             })
             .then(done, done);
