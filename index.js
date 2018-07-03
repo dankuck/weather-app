@@ -11,7 +11,11 @@ app.get('/api/weather-search', function (req, res) {
         res.status(400).json({error: "The `location` parameter is required."});
         return;
     }
-    const api_key = config.openweathermap.api_key;
+    const api_key = config && config.openweathermap && config.openweathermap.api_key;
+    if (!api_key) {
+        res.status(400).json({error: "No API key is setup in config.json."});
+        return;
+    }
     const client = new OpenWeatherApiClient(api_key);
     client.getForecastByCityName(location)
         .then(

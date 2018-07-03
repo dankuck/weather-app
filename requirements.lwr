@@ -27,5 +27,6 @@
         3.b.a. If the `location` parameter is not present, the endpoint MUST return an HTTP error status code.
     3.c. The weather-search endpoint MUST search the openweathermap.com API for the location given.
         3.c.a. If the openweathermap.com API returns an error, this endpoint MUST return that error.
+        3.c.b. If the api_key is not setup in the config, this endpoint MUST return an error.
     3.d. The weather-search endpoint SHOULD return the exact data returned from the openweathermap.com API.
 

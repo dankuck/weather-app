@@ -63,3 +63,6 @@ typings/
 # compiled Vue
 public/app.js
 public/app.js.map
+
+# config
+config.json

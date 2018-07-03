@@ -103,4 +103,20 @@ describe('index.js', function () {
             })
             .then(done, done);
     });
+
+    /**
+     * @LWR 3.c.b. If the api_key is not setup in the config, this endpoint 
+     * MUST return an error.
+     */
+    it('should cause trouble if there is no api key', function (done) {
+        delete requestMock.get;
+        delete configMock.openweathermap;
+        request(server)
+            .get('/api/weather-search?location=nowhere')
+            .expect(400)
+            .then(response => {
+                assert(/No API key is setup in config.json/.test(response.body.error));
+            })
+            .then(done, done);
+    });
 });
