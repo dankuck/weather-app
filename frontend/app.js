@@ -1,9 +1,9 @@
 
 window.Vue = require('vue');
 
-Vue.component('app', require('./App.vue').default);
-Vue.component('search', require('./Search.vue').default);
+import App from './App.vue';
 
 new Vue({
     el: '#app',
+    components: {App},
 });

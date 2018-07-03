@@ -20,7 +20,7 @@ describe('Search', function () {
     it('has an input', function (done) {
         const wrapper = shallowMount(Search, {
             propsData: {
-                'searchTerm': 'Toronto',
+                'startSearchTerm': 'Toronto',
             },
         });
         wrapper.vm.$nextTick()
@@ -38,7 +38,7 @@ describe('Search', function () {
     it('has a search button', function (done) {
         const wrapper = shallowMount(Search, {
             propsData: {
-                'searchTerm': 'Toronto',
+                'startSearchTerm': 'Toronto',
             },
         });
         wrapper.vm.$nextTick()
@@ -57,7 +57,7 @@ describe('Search', function () {
      it('emits up on search click', function (done) {
         const wrapper = shallowMount(Search, {
             propsData: {
-                'searchTerm': 'Toronto',
+                'startSearchTerm': 'Toronto',
             },
         });
         wrapper.vm.$nextTick()
@@ -79,7 +79,7 @@ describe('Search', function () {
      it('emits up on search click', function (done) {
         const wrapper = shallowMount(Search, {
             propsData: {
-                'searchTerm': 'Toronto',
+                'startSearchTerm': 'Toronto',
             },
         });
         wrapper.vm.$nextTick()

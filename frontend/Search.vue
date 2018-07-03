@@ -11,10 +11,10 @@
 
 <script>
 export default {
-    props: ['searchTerm'],
+    props: ['startSearchTerm'],
     data() {
         return {
-            term: this.searchTerm,
+            term: this.startSearchTerm,
         };
     },
     methods: {
