@@ -1,6 +1,6 @@
 1. A section of the page MUST exist to enter the name of a city.
     1.a. The section MUST have a text box to enter the name of a city.
-        1.a.a. The text box SHOULD start with value "New York City".
+        1.a.a. The text box SHOULD start with value "New York".
     1.b. The section MUST have a search button next to it.
     1.c. Pressing enter or clicking the search button MUST cause a search operation.
 
