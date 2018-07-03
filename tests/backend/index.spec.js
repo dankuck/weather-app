@@ -77,9 +77,30 @@ describe('index.js', function () {
             .get('/api/weather-search')
             .expect(400)
             .then(response => {
-                assert(/`location` parameter is required/.test(response.text));
+                assert(/`location` parameter is required/.test(response.body.error));
             })
             .then(done, done);
     });
 
+    /**
+     * @LWR 3.c.a. If the openweathermap.com API returns an error, this 
+     * endpoint MUST return that error.
+     */
+    it('should cause trouble if the remote endpoint results in an error', function (done) {
+        let caughtUrl;
+        requestMock.get = function (url, callback) {
+            caughtUrl = url;
+            callback(500, {}, "API not currently available");
+        };
+        configMock.openweathermap = {
+            api_key: 'mykey',
+        };
+        request(server)
+            .get('/api/weather-search?location=nowhere')
+            .expect(500)
+            .then(response => {
+                assert(/API not currently available/.test(response.body.error));
+            })
+            .then(done, done);
+    });
 });
