@@ -27,4 +27,14 @@ describe('App', function () {
         search.$emit('search', 'Des Moines');
         expect(wrapper.vm.searchTerm).toEqual('Des Moines');
     });
+
+    /**
+     * @LWR 2.e. When the location changes, this component MUST pull new data 
+     * from the backend.
+     */
+    it('the App passes the search term to a ForecastList', function () {
+        const wrapper = shallowMount(App, {});
+        const forecast = wrapper.vm.$children[1];
+        expect(forecast.location).toEqual('New York');
+    });
 });
