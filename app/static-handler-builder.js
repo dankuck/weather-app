@@ -11,12 +11,15 @@ function buildErrorPage(filename, err) {
             `;
 };
 
-module.exports = function (filename) {
+module.exports = function (filename, type) {
     return function (req, res) {
         fs.readFile(`public\\${filename}`, 'utf8', function (err, data) {
             if (err) {
                 res.status(404)
                     .send(buildErrorPage(filename, err));
+            }
+            if (type) {
+                res.set('Content-Type', type);
             }
             res.send(data);
         });

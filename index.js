@@ -3,8 +3,9 @@ const serve = require('./app/static-handler-builder.js');
 const OpenWeatherApiClient = require('./app/open-weather-api-client.js');
 const config = require('./config.json');
  
-app.get('/', serve('./index.html'));
-app.get('/app.js', serve('./app.js'));
+app.get('/', serve('index.html', 'text/html'));
+app.get('/app.js', serve('app.js', 'application/javascript'));
+app.get('/app.css', serve('app.css', 'text/css'));
 app.get('/api/weather-search', function (req, res) {
     const location = req.query.location;
     if (!location) {

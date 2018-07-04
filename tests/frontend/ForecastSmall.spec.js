@@ -22,9 +22,9 @@ describe('ForecastSmall', function () {
                 period: sampleResponse.list[0],
             },
         });
-        assert(/2018-07-04 03:00:00/.test(wrapper.text()));
+        assert(/Tue 11:00:00 pm/.test(wrapper.text()));
         assert(/Clouds/.test(wrapper.text()));
-        assert(/297\/298/.test(wrapper.text()));
+        assert(/297°\/298°/.test(wrapper.text()));
         expect(wrapper.findAll('img').length).toEqual(1);
     });
 

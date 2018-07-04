@@ -1,6 +1,6 @@
 <template>
-    <div class="form-row">
-        <div class="col-sm-12">
+    <div class="row">
+        <div class="col-12">
             <h2>{{ weather && weather.city && weather.city.name || location }}</h2>
         </div>
         <div v-if="weatherError === true">
@@ -45,7 +45,7 @@ export default {
         refresh() {
             this.weather = null;
             this.weatherError = false;
-            this.$http.get('/api/weather-search?location=' + encodeURIComponent(this.location))
+            this.$http.get('/api/weather-search?units=imperial&location=' + encodeURIComponent(this.location))
                 .then(
                     ({ body }) => this.weather = body,
                     ({ body }) => this.weatherError = body.error || true
