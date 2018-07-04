@@ -1,13 +1,15 @@
 <template>
-    <div>
-        <h2>{{ weather && weather.city && weather.city.name || location }}</h2>
+    <div class="form-row">
+        <div class="col-sm-12">
+            <h2>{{ weather && weather.city && weather.city.name || location }}</h2>
+        </div>
         <div v-if="weatherError === true">
             Could not access weather data for {{ location }}.
         </div>
         <div v-else-if="weatherError">
             {{ weatherError }}
         </div>
-        <div v-else-if="weather">
+        <template v-else-if="weather">
             <forecast-small 
                 v-for="period in weather.list"
                 :period="period"
@@ -15,7 +17,7 @@
                 @click="$emit('click', period)"
             >
             </forecast-small>
-        </div>
+        </template>
     </div>
 </template>
 
