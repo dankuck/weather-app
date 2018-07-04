@@ -91,4 +91,61 @@ describe('ForecastList', function () {
             })
             .then(done, done);
     });
+
+    /**
+     * @LWR 2.b. When a search is conducted a title header on this section 
+     * MUST display the location found.
+     */
+    it('shows the title', function (done) {
+        httpMocker.setRoutes({
+            GET: {
+                '/api/weather-search': function (request) {
+                    return sampleResponse;
+                },
+            },
+        });
+        const wrapper = shallowMount(ForecastList, {
+            localVue,
+            propsData: {
+                location: 'Trenton',
+            },
+        });
+        waitTicks(wrapper.vm, 14)
+            .then(() => {
+                // The sampleResponse gives "New York" even though we asked for "Trenton".
+                // This is useful to test that we show the value from the right place
+                assert(/New York/.test(wrapper.text()));
+            })
+            .then(done, done);
+    });
+
+    /**
+     * @LWR 2.b.a. If no matching location is found, the title MAY reflect the 
+     * search bar.
+     *
+     * @LWR 2.b.b. If no matching location is found, a message to that effect 
+     * MUST be shown.
+     */
+    it('falls back to the location and shows an error', function (done) {
+        httpMocker.setRoutes({
+            GET: {
+                '/api/weather-search': function (request) {
+                    return request.respondWith({error: 'No such city'}, {status: 500});
+                },
+            },
+        });
+        const wrapper = shallowMount(ForecastList, {
+            localVue,
+            propsData: {
+                location: 'Trenton',
+            },
+        });
+        waitTicks(wrapper.vm, 2)
+            .then(() => {
+                assert(/Trenton/.test(wrapper.text()));
+                console.log(wrapper.vm.weatherError);
+                assert(/No such city/.test(wrapper.text()));
+            })
+            .then(done, done);
+    });
 });

@@ -1,5 +1,13 @@
 <template>
-    <div>x</div>
+    <div>
+        <h2>{{ weather && weather.city && weather.city.name || location }}</h2>
+        <div v-if="weatherError === true">
+            Could not access weather data for {{ location }}.
+        </div>
+        <div v-else-if="weatherError">
+            {{ weatherError }}
+        </div>
+    </div>
 </template>
 
 <script>
@@ -8,6 +16,7 @@ export default {
     data() {
         return {
             weather: null,
+            weatherError: false,
         };
     },
     mounted() {
@@ -20,10 +29,12 @@ export default {
     },
     methods: {
         refresh() {
+            this.weather = null;
+            this.weatherError = false;
             this.$http.get('/api/weather-search?location=' + encodeURIComponent(this.location))
                 .then(
                     ({ body }) => this.weather = body,
-                    ({ error }) => this.weatherError = error || true
+                    ({ body }) => this.weatherError = body.error || true
                 );
         },
     },
