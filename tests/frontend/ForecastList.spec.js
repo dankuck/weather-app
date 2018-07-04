@@ -174,14 +174,35 @@ describe('ForecastList', function () {
         waitTicks(wrapper.vm, 2)
             .then(() => {
                 expect(wrapper.vm.$children.length).toEqual(2);
-                return;
-                assert(/2018-07-04 03:00:00/.test(wrapper.text()));
-                assert(/2018-07-04 06:00:00/.test(wrapper.text()));
-                assert(/Clouds/.test(wrapper.text()));
-                assert(/Rain/.test(wrapper.text()));
-                assert(/297\/298/.test(wrapper.text()));
-                assert(/296\/297/.test(wrapper.text()));
-                expect(wrapper.findAll('img').length).toEqual(2);
+            })
+            .then(done, done);
+    });
+
+
+    /**
+     * @LWR 2.c.e. Each list item MUST emit when clicked.
+     */
+    it('shows the list', function (done) {
+        httpMocker.setRoutes({
+            GET: {
+                '/api/weather-search': function () {
+                    return sampleResponse;
+                },
+            },
+        });
+        const wrapper = shallowMount(ForecastList, {
+            localVue,
+            propsData: {
+                location: 'Trenton',
+            },
+        });
+        waitTicks(wrapper.vm, 2)
+            .then(() => {
+                wrapper.vm.$children[0].$emit('click');
+                const clicks = wrapper.emitted().click;
+                assert(clicks);
+                expect(clicks.length).toEqual(1);
+                expect(clicks[0][0].dt_txt).toEqual("2018-07-04 03:00:00");
             })
             .then(done, done);
     });

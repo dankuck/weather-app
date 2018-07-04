@@ -12,6 +12,7 @@
                 v-for="period in weather.list"
                 :period="period"
                 :key="period.dt"
+                @click="$emit('click', period)"
             >
             </forecast-small>
         </div>

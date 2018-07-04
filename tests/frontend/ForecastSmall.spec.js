@@ -27,4 +27,17 @@ describe('ForecastSmall', function () {
         assert(/297\/298/.test(wrapper.text()));
         expect(wrapper.findAll('img').length).toEqual(1);
     });
+
+    /**
+     * @LWR 2.c.e. Each list item MUST emit when clicked.
+     */
+    it('emits clicked', function () {
+        const wrapper = shallowMount(ForecastSmall, {
+            propsData: {
+                period: sampleResponse.list[0],
+            },
+        });
+        wrapper.trigger('click');
+        assert(wrapper.emitted().click);
+    });
 });

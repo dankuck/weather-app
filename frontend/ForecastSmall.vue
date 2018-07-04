@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div @click="$emit('click')">
         {{ period.dt_txt }}
         {{ period.weather[0].main }}
         {{ Math.round(period.main.temp_min) }}/{{ Math.round(period.main.temp_max) }}
