@@ -5,7 +5,7 @@ const expect = require('expect');
 
 describe('index.js', function () {
 
-    let server, app;
+    let server;
     const requestMock = {};
     const configMock = {};
 
@@ -15,7 +15,7 @@ describe('index.js', function () {
     });
 
     beforeEach(function () {
-        ({server, app} = require('../../index.js'));
+        server = require('../../index.js');
     });
 
     afterEach(function () {

@@ -27,4 +27,4 @@ app.get('/api/weather-search', function (req, res) {
  
 const server = app.listen(3000)
 
-module.exports = {server, app};
+module.exports = server;
