@@ -1,0 +1,85 @@
+{
+    "cod": "200",
+    "message": 0.0052,
+    "cnt": 2,
+    "list": [
+        {
+            "dt": 1530673200,
+            "main": {
+                "temp": 296.88,
+                "temp_min": 296.88,
+                "temp_max": 297.84,
+                "pressure": 1033.68,
+                "sea_level": 1037.11,
+                "grnd_level": 1033.68,
+                "humidity": 70,
+                "temp_kf": -0.96
+            },
+            "weather": [
+                {
+                    "id": 802,
+                    "main": "Clouds",
+                    "description": "scattered clouds",
+                    "icon": "03n"
+                }
+            ],
+            "clouds": {
+                "all": 36
+            },
+            "wind": {
+                "speed": 2.25,
+                "deg": 176.502
+            },
+            "rain": {},
+            "sys": {
+                "pod": "n"
+            },
+            "dt_txt": "2018-07-04 03:00:00"
+        },
+        {
+            "dt": 1530684000,
+            "main": {
+                "temp": 296.1,
+                "temp_min": 296.1,
+                "temp_max": 296.819,
+                "pressure": 1033.95,
+                "sea_level": 1037.33,
+                "grnd_level": 1033.95,
+                "humidity": 80,
+                "temp_kf": -0.72
+            },
+            "weather": [
+                {
+                    "id": 500,
+                    "main": "Rain",
+                    "description": "light rain",
+                    "icon": "10n"
+                }
+            ],
+            "clouds": {
+                "all": 92
+            },
+            "wind": {
+                "speed": 1.61,
+                "deg": 155.009
+            },
+            "rain": {
+                "3h": 1.105
+            },
+            "sys": {
+                "pod": "n"
+            },
+            "dt_txt": "2018-07-04 06:00:00"
+        }
+    ],
+    "city": {
+        "id": 5128581,
+        "name": "New York",
+        "coord": {
+            "lat": 40.7306,
+            "lon": -73.9867
+        },
+        "country": "US",
+        "population": 8175133
+    }
+}
