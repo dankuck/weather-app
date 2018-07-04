@@ -8,18 +8,21 @@
             {{ weatherError }}
         </div>
         <div v-else-if="weather">
-            <div v-for="period in weather.list">
-                {{ period.dt_txt }}
-                {{ period.weather[0].main }}
-                {{ Math.round(period.main.temp_min) }}/{{ Math.round(period.main.temp_max) }}
-                <img :src="period.weather[0].icon" />
-            </div>
+            <forecast-small 
+                v-for="period in weather.list"
+                :period="period"
+                :key="period.dt"
+            >
+            </forecast-small>
         </div>
     </div>
 </template>
 
 <script>
+import ForecastSmall from './ForecastSmall.vue';
+
 export default {
+    components: {ForecastSmall},
     props: ['location'],
     data() {
         return {

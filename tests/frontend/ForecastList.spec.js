@@ -173,6 +173,8 @@ describe('ForecastList', function () {
         });
         waitTicks(wrapper.vm, 2)
             .then(() => {
+                expect(wrapper.vm.$children.length).toEqual(2);
+                return;
                 assert(/2018-07-04 03:00:00/.test(wrapper.text()));
                 assert(/2018-07-04 06:00:00/.test(wrapper.text()));
                 assert(/Clouds/.test(wrapper.text()));
