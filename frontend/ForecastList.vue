@@ -7,6 +7,14 @@
         <div v-else-if="weatherError">
             {{ weatherError }}
         </div>
+        <div v-else-if="weather">
+            <div v-for="period in weather.list">
+                {{ period.dt_txt }}
+                {{ period.weather[0].main }}
+                {{ Math.round(period.main.temp_min) }}/{{ Math.round(period.main.temp_max) }}
+                <img :src="period.weather[0].icon" />
+            </div>
+        </div>
     </div>
 </template>
 

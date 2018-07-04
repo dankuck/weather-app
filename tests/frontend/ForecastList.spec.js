@@ -110,7 +110,7 @@ describe('ForecastList', function () {
                 location: 'Trenton',
             },
         });
-        waitTicks(wrapper.vm, 14)
+        waitTicks(wrapper.vm, 2)
             .then(() => {
                 // The sampleResponse gives "New York" even though we asked for "Trenton".
                 // This is useful to test that we show the value from the right place
@@ -143,8 +143,43 @@ describe('ForecastList', function () {
         waitTicks(wrapper.vm, 2)
             .then(() => {
                 assert(/Trenton/.test(wrapper.text()));
-                console.log(wrapper.vm.weatherError);
                 assert(/No such city/.test(wrapper.text()));
+            })
+            .then(done, done);
+    });
+
+    /**
+     * @LWR 2.c. The weather forecast MUST be shown as a list of time periods.
+     * 
+     * @LWR 2.c.b. Each list item MUST display an abbreviated date and time.
+     * 
+     * @LWR 2.c.c. Each list item MUST display a description of the forecast.
+     * 
+     * @LWR 2.c.d. Each list item MUST display a high and low temperature.
+     */
+    it('shows the list', function (done) {
+        httpMocker.setRoutes({
+            GET: {
+                '/api/weather-search': function () {
+                    return sampleResponse;
+                },
+            },
+        });
+        const wrapper = shallowMount(ForecastList, {
+            localVue,
+            propsData: {
+                location: 'Trenton',
+            },
+        });
+        waitTicks(wrapper.vm, 2)
+            .then(() => {
+                assert(/2018-07-04 03:00:00/.test(wrapper.text()));
+                assert(/2018-07-04 06:00:00/.test(wrapper.text()));
+                assert(/Clouds/.test(wrapper.text()));
+                assert(/Rain/.test(wrapper.text()));
+                assert(/297\/298/.test(wrapper.text()));
+                assert(/296\/297/.test(wrapper.text()));
+                expect(wrapper.findAll('img').length).toEqual(2);
             })
             .then(done, done);
     });
