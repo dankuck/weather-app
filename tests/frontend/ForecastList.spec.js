@@ -32,11 +32,11 @@ describe('ForecastList', function () {
      * from the backend.
      */
     it('pulls from the backend when loaded', function (done) {
-        let caughtRequest;
+        let lastRequest;
         httpMocker.setRoutes({
             GET: {
                 '/api/weather-search': function (request) {
-                    caughtRequest = request;
+                    lastRequest = request;
                     return sampleResponse;
                 },
             },
@@ -47,11 +47,46 @@ describe('ForecastList', function () {
                 location: 'Trenton',
             },
         });
-        assert(caughtRequest);
-        assert(/\/api\/weather-search/.test(caughtRequest.url));
-        expect(caughtRequest.query.location).toEqual('Trenton');
+        assert(lastRequest);
+        assert(/\/api\/weather-search/.test(lastRequest.url));
+        expect(lastRequest.query.location).toEqual('Trenton');
         waitTicks(wrapper.vm, 2)
             .then(() => {
+                expect(wrapper.vm.weather).toEqual(sampleResponse);
+            })
+            .then(done, done);
+    });
+
+    /**
+     * @LWR 2.e. When the location changes, this component MUST pull new data 
+     * from the backend.
+     */
+    it('pulls from the backend when changed', function (done) {
+        let lastRequest;
+        httpMocker.setRoutes({
+            GET: {
+                '/api/weather-search': function (request) {
+                    lastRequest = request;
+                    return sampleResponse;
+                },
+            },
+        });
+        const wrapper = shallowMount(ForecastList, {
+            localVue,
+            propsData: {
+                location: 'Trenton',
+            },
+        });
+        assert(lastRequest); // that's one
+        lastRequest = null;
+        waitTicks(wrapper.vm, 2)
+            .then(() => {
+                wrapper.setProps({location: 'Boise'});
+                return waitTicks(wrapper.vm, 2);
+            })
+            .then(() => {
+                assert(lastRequest); // the second one!
+                expect(lastRequest.query.location).toEqual('Boise');
                 expect(wrapper.vm.weather).toEqual(sampleResponse);
             })
             .then(done, done);

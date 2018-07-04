@@ -13,6 +13,11 @@ export default {
     mounted() {
         this.refresh();
     },
+    watch: {
+        location() {
+            this.refresh();
+        },
+    },
     methods: {
         refresh() {
             this.$http.get('/api/weather-search?location=' + encodeURIComponent(this.location))
