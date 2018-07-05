@@ -2,7 +2,7 @@
     <div>
         <h1>Daniel Kuck's Amazing Weather App</h1>
         <search :start-search-term="searchTerm" @search="setSearchTerm" />
-        <forecast-list :location="searchTerm" />
+        <forecast-list :location="searchTerm" @click="setSelectedPeriod" />
     </div>
 </template>
 
@@ -23,6 +23,9 @@ export default {
     methods: {
         setSearchTerm(searchTerm) {
             this.searchTerm = searchTerm;
+        },
+        setSelectedPeriod(selectedPeriod) {
+            this.selectedPeriod = selectedPeriod;
         },
     },
 }

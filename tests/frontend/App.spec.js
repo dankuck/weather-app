@@ -37,4 +37,16 @@ describe('App', function () {
         const forecast = wrapper.vm.$children[1];
         expect(forecast.location).toEqual('New York');
     });
+
+    /**
+     * @LWR 2.d. The weather forecast list items MUST display a more detailed 
+     * view when clicked.
+     */
+    it('the ForecastList component sets the selectedPeriod', function () {
+        const wrapper = shallowMount(App, {});
+        const list = wrapper.vm.$children[1];
+        const period = {};
+        list.$emit('click', period);
+        expect(wrapper.vm.selectedPeriod).toEqual(period);
+    });
 });
