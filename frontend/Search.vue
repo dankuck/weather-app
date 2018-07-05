@@ -1,9 +1,9 @@
 <template>
-    <div class="form-row">
-        <div class="form-group col-md-10">
+    <div class="form-row search">
+        <div class="form-group col-10">
             <input v-model="term" placeholder="City Name" class="form-control" @keyup.enter="search" />
         </div>
-        <div class="form-group col-md-2">
+        <div class="form-group col-2">
             <button type="button" class="btn btn-primary btn-lg" @click="search">Search</button>
         </div>
     </div>

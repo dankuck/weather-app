@@ -3,3 +3,26 @@
     margin-bottom: 1em;
     cursor: pointer;
 }
+
+.forecast-detail .close {
+    font-size: 200%;
+    width: 3em;
+    height: 1.5em;
+}
+
+.search button {
+    width: 100%;
+}
+
+.weather-error {
+    text-transform: capitalize;
+}
+
+.forecast-detail .description {
+    text-transform: capitalize;
+    font-size: 150%;
+}
+
+.forecast-detail .quality {
+    font-size: 150%;
+}
