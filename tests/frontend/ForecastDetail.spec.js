@@ -41,4 +41,19 @@ describe('ForecastDetail', function () {
         assert(/297°F/.test(wrapper.text()));
         assert(/70%/.test(wrapper.text()));
     });
+
+    /**
+     * @LWR 2.d.e. The detailed view MUST have an X to close the detailed view.
+     */
+    it('should close on x', function () {
+        const wrapper = shallowMount(ForecastDetail, {
+            propsData: {
+                period: sampleResponse.list[0],
+            },
+        });
+        const [button] = wrapper.findAll('button').wrappers;
+        assert(button);
+        button.trigger('click');
+        expect(wrapper.emitted().close.length).toEqual(1);
+    });
 });

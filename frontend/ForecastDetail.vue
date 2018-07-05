@@ -5,6 +5,7 @@
         Low: {{ Math.round(period.main.temp_min) }}&deg;F
         High: {{ Math.round(period.main.temp_max) }}&deg;F
         Humidity: {{ period.main.humidity }}%
+        <button @click="$emit('close')">&times;</button>
     </div>
 </template>
 
