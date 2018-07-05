@@ -14,6 +14,7 @@
         2.c.b. Each list item MUST display an abbreviated date and time.
         2.c.c. Each list item MUST display a description of the forecast.
         2.c.d. Each list item MUST display a high and low temperature.
+        2.c.e. Each list item MUST emit when clicked.
     2.d. The weather forecast list items MUST display a more detailed view when clicked.
         2.d.a. The detailed view MUST display the weather icon.
         2.d.b. The detailed view MUST display a verbose date and time.
