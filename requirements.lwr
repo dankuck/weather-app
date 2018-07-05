@@ -3,12 +3,16 @@
         1.a.a. The text box SHOULD start with value "New York".
     1.b. The section MUST have a search button next to it.
     1.c. Pressing enter or clicking the search button MUST cause a search operation.
+    1.d. When the location changes, this component MUST pull new data from the backend.
+    1.e. When a search is conducted a title header on this section MUST display the location found.
+        1.e.a. If no matching location is found, the title MAY reflect the search bar.
+        1.e.b. If no matching location is found, a message to that effect MUST be shown.
 
 2. A section MUST exist to display the results of a search.
     2.a. The section MUST have a title with the same city as the search text box.
-    2.b. When a search is conducted a title header on this section MUST display the location found.
-        2.b.a. If no matching location is found, the title MAY reflect the search bar.
-        2.b.b. If no matching location is found, a message to that effect MUST be shown.
+    2.b. (X) When a search is conducted a title header on this section MUST display the location found.
+        2.b.a. (X) If no matching location is found, the title MAY reflect the search bar.
+        2.b.b. (X) If no matching location is found, a message to that effect MUST be shown.
     2.c. The weather forecast MUST be shown as a list of time periods.
         2.c.a. Each list item MUST display a weather icon.
         2.c.b. Each list item MUST display an abbreviated date and time.
@@ -21,7 +25,7 @@
         2.d.c. The detailed view MUST display the high and low.
         2.d.d. The detailed view MUST display the humidity.
         2.d.e. The detailed view MUST have an X to close the detailed view.
-    2.e. When the location changes, this component MUST pull new data from the backend.
+    2.e. (X) When the location changes, this component MUST pull new data from the backend.
 
 3. The backend MUST have an endpoint to retrieve weather data from the openweathermap.com website.
     3.a. The backend must have an endpoint `/api/weather-search`.
