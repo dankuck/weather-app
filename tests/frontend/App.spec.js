@@ -2,6 +2,8 @@ require('jsdom-global')();
 import { shallowMount } from '@vue/test-utils';
 import App from '../../frontend/App.vue';
 import Search from '../../frontend/Search.vue';
+import ForecastList from '../../frontend/ForecastList.vue';
+import ForecastDetail from '../../frontend/ForecastDetail.vue';
 import assert from 'assert';
 import expect from 'expect';
 
@@ -23,8 +25,9 @@ describe('App', function () {
      */
     it('the Search component sets the searchTerm', function () {
         const wrapper = shallowMount(App, {});
-        const search = wrapper.vm.$children[0];
-        search.$emit('search', 'Des Moines');
+        const search = wrapper.find(Search);
+        assert(search.isVueInstance());
+        search.vm.$emit('search', 'Des Moines');
         expect(wrapper.vm.searchTerm).toEqual('Des Moines');
     });
 
@@ -34,8 +37,9 @@ describe('App', function () {
      */
     it('the App passes the search term to a ForecastList', function () {
         const wrapper = shallowMount(App, {});
-        const forecast = wrapper.vm.$children[1];
-        expect(forecast.location).toEqual('New York');
+        const list = wrapper.find(ForecastList);
+        assert(list.isVueInstance());
+        expect(list.vm.location).toEqual('New York');
     });
 
     /**
@@ -44,9 +48,22 @@ describe('App', function () {
      */
     it('the ForecastList component sets the selectedPeriod', function () {
         const wrapper = shallowMount(App, {});
-        const list = wrapper.vm.$children[1];
+        const list = wrapper.find(ForecastList);
+        assert(list.isVueInstance());
         const period = {};
-        list.$emit('click', period);
+        list.vm.$emit('click', period);
         expect(wrapper.vm.selectedPeriod).toEqual(period);
+    });
+
+    /**
+     * @LWR 2.d.e. The detailed view MUST have an X to close the detailed view.
+     */
+    it('the ForecastDetail closes', function () {
+        const wrapper = shallowMount(App, {});
+        wrapper.setData({selectedPeriod: {}});
+        const detail = wrapper.find(ForecastDetail);
+        assert(detail.isVueInstance());
+        detail.vm.$emit('close');
+        expect(wrapper.findAll(ForecastDetail).length).toEqual(0);
     });
 });
