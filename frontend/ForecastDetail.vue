@@ -1,38 +1,40 @@
 <template>
     <div class="row">
-        <div class="card col-12 forecast-detail">
-            <div class="card-body">
-                <div class="card-text">
-                    <div class="form-group row">
-                        <div class="col-1">
-                            <img :src="icon" />
+        <div class="col-12">
+            <div class="card forecast-detail">
+                <div class="card-body">
+                    <div class="card-text">
+                        <div class="form-group row">
+                            <div class="col-1">
+                                <img :src="icon" />
+                            </div>
+                            <h4 class="col-10">
+                                {{ time }}
+                            </h4>
+                            <div class="col-1">
+                                <button class="close" @click="$emit('close')">&times;</button>
+                            </div>
                         </div>
-                        <h4 class="col-10">
-                            {{ time }}
-                        </h4>
-                        <div class="col-1">
-                            <button class="close" @click="$emit('close')">&times;</button>
+                        <div class="description">
+                            {{ period.weather[0].description }}
                         </div>
-                    </div>
-                    <div class="description">
-                        {{ period.weather[0].description }}
-                    </div>
-                    <div class="quality form-group row">
-                        <label class="col-3 col-form-label">Low</label>
-                        <div class="col-9">
-                            <span class="form-control-plaintext">{{ Math.round(period.main.temp_min) }}&deg;F</span>
+                        <div class="quality form-group row">
+                            <label class="col-3 col-form-label">Low</label>
+                            <div class="col-9">
+                                <span class="form-control-plaintext">{{ Math.round(period.main.temp_min) }}&deg;F</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="quality form-group row">
-                        <label class="col-3 col-form-label">High</label>
-                        <div class="col-9">
-                            <span class="form-control-plaintext">{{ Math.round(period.main.temp_max) }}&deg;F</span>
+                        <div class="quality form-group row">
+                            <label class="col-3 col-form-label">High</label>
+                            <div class="col-9">
+                                <span class="form-control-plaintext">{{ Math.round(period.main.temp_max) }}&deg;F</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="quality form-group row">
-                        <label class="col-3 col-form-label">Humidity</label>
-                        <div class="col-9">
-                            <span class="form-control-plaintext">{{ period.main.humidity }}%</span>
+                        <div class="quality form-group row">
+                            <label class="col-3 col-form-label">Humidity</label>
+                            <div class="col-9">
+                                <span class="form-control-plaintext">{{ period.main.humidity }}%</span>
+                            </div>
                         </div>
                     </div>
                 </div>
