@@ -67,7 +67,7 @@ export default {
         fetchWeather() {
             this.weather = null;
             this.weatherError = false;
-            this.$http.get('/api/weather-search?units=imperial&location=' + encodeURIComponent(this.searchTerm))
+            this.$http.get('/api/weather-search?location=' + encodeURIComponent(this.searchTerm))
                 .then(
                     ({ body }) => this.weather = body,
                     ({ body }) => this.weatherError = body.error || true
