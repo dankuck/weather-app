@@ -5,13 +5,13 @@
                 <div class="card-body">
                     <div class="card-text">
                         <div class="form-group row">
-                            <div class="col-1">
+                            <div class="col-md-1 col-12">
                                 <img :src="icon" />
                             </div>
-                            <h4 class="col-10">
+                            <h4 class="col-md-10 col-6">
                                 {{ time }}
                             </h4>
-                            <div class="col-1">
+                            <div class="col-md-1 col-6">
                                 <button class="close" @click="$emit('close')">&times;</button>
                             </div>
                         </div>
