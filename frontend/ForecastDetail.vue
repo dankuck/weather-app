@@ -19,20 +19,20 @@
                             {{ period.weather[0].description }}
                         </div>
                         <div class="quality form-group row">
-                            <label class="col-3 col-form-label">Low</label>
-                            <div class="col-9">
+                            <label class="col-6 col-md-3 col-lg-2 col-form-label">Low</label>
+                            <div class="col-6 col-md-9 col-lg-10">
                                 <span class="form-control-plaintext">{{ Math.round(period.main.temp_min) }}&deg;F</span>
                             </div>
                         </div>
                         <div class="quality form-group row">
-                            <label class="col-3 col-form-label">High</label>
-                            <div class="col-9">
+                            <label class="col-6 col-md-3 col-lg-2 col-form-label">High</label>
+                            <div class="col-6 col-md-9 col-lg-10">
                                 <span class="form-control-plaintext">{{ Math.round(period.main.temp_max) }}&deg;F</span>
                             </div>
                         </div>
                         <div class="quality form-group row">
-                            <label class="col-3 col-form-label">Humidity</label>
-                            <div class="col-9">
+                            <label class="col-6 col-md-3 col-lg-2 col-form-label">Humidity</label>
+                            <div class="col-6 col-md-9 col-lg-10">
                                 <span class="form-control-plaintext">{{ period.main.humidity }}%</span>
                             </div>
                         </div>
