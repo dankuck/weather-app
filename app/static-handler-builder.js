@@ -13,7 +13,7 @@ function buildErrorPage(filename, err) {
 
 module.exports = function (filename, type) {
     return function (req, res) {
-        fs.readFile(`public\\${filename}`, 'utf8', function (err, data) {
+        fs.readFile(`public/${filename}`, 'utf8', function (err, data) {
             if (err) {
                 res.status(404)
                     .send(buildErrorPage(filename, err));
